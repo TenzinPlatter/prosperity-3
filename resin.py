@@ -3,15 +3,7 @@ import jsonpickle
 import math
 import statistics
 from typing import Dict, List
-from classes import *
-
-# Type aliases
-Time = int
-Symbol = str
-Product = str
-Position = int
-UserId = str
-ObservationValue = int
+from datamodel import Listing, OrderDepth, Trade, TradingState, Order
 
 
 class Trader:
