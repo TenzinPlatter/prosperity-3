@@ -14,16 +14,26 @@ ObservationValue = int
 
 # Constants
 RESIN = "RAINFOREST_RESIN"
+# start
+ALPHA_EARLY = 0.0
+ALPHA_LATE = 0.0
+BASESPREAD = 0.0
+ADJUST_SCALE = 0.0
+MAX_ORDER_EARLY = 0.0
+MAX_ORDER_LATE = 2.1
+# end
 
 ############################################
 # Data model classes
 ############################################
+
 
 class Listing:
     def __init__(self, symbol: Symbol, product: Product, denomination: Product):
         self.symbol = symbol
         self.product = product
         self.denomination = denomination
+
 
 class ConversionObservation:
     def __init__(
@@ -34,7 +44,7 @@ class ConversionObservation:
         exportTariff: float,
         importTariff: float,
         sugarPrice: float,
-        sunlightIndex: float
+        sunlightIndex: float,
     ):
         self.bidPrice = bidPrice
         self.askPrice = askPrice
@@ -44,17 +54,24 @@ class ConversionObservation:
         self.sugarPrice = sugarPrice
         self.sunlightIndex = sunlightIndex
 
+
 class Observation:
     def __init__(
         self,
         plainValueObservations: Dict[Product, ObservationValue],
-        conversionObservations: Dict[Product, ConversionObservation]
+        conversionObservations: Dict[Product, ConversionObservation],
     ) -> None:
         self.plainValueObservations = plainValueObservations
         self.conversionObservations = conversionObservations
 
     def __str__(self) -> str:
-        return "(plainValueObservations: " + jsonpickle.encode(self.plainValueObservations) + ", conversionObservations: " + jsonpickle.encode(self.conversionObservations) + ")"
+        return (
+            "(plainValueObservations: "
+            + jsonpickle.encode(self.plainValueObservations)
+            + ", conversionObservations: "
+            + jsonpickle.encode(self.conversionObservations)
+            + ")"
+        )
 
 
 class Order:
@@ -69,10 +86,12 @@ class Order:
     def __repr__(self) -> str:
         return f"({self.symbol}, {self.price}, {self.quantity})"
 
+
 class OrderDepth:
     def __init__(self):
         self.buy_orders: Dict[int, int] = {}
         self.sell_orders: Dict[int, int] = {}
+
 
 class Trade:
     def __init__(
@@ -82,7 +101,7 @@ class Trade:
         quantity: int,
         buyer: UserId | None = None,
         seller: UserId | None = None,
-        timestamp: int = 0
+        timestamp: int = 0,
     ) -> None:
         self.symbol = symbol
         self.price: int = price
@@ -97,6 +116,7 @@ class Trade:
     def __repr__(self) -> str:
         return f"({self.symbol}, {self.buyer} << {self.seller}, {self.price}, {self.quantity}, {self.timestamp})"
 
+
 class TradingState:
     def __init__(
         self,
@@ -107,7 +127,7 @@ class TradingState:
         own_trades: Dict[Symbol, List[Trade]],
         market_trades: Dict[Symbol, List[Trade]],
         position: Dict[Product, Position],
-        observations: Observation
+        observations: Observation,
     ):
         self.traderData = traderData
         self.timestamp = timestamp
@@ -121,17 +141,19 @@ class TradingState:
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True)
 
+
 class ProsperityEncoder(json.JSONEncoder):
     def default(self, o):
         return o.__dict__
+
 
 ############################################
 # Trader class for Round 1
 ############################################
 
+
 class Trader:
     def run(self, state: TradingState):
-        
 
         ##################################################################
         # 0. UNPACK / INITIALIZE
@@ -208,13 +230,13 @@ class Trader:
             # Asymmetric shift
             if diff > 0:
                 sell_price += diff * adjust_scale
-                buy_price  -= diff * (adjust_scale / 2)
+                buy_price -= diff * (adjust_scale / 2)
             else:
-                buy_price  += diff * adjust_scale
+                buy_price += diff * adjust_scale
                 sell_price -= diff * (adjust_scale / 2)
 
             # Round to nearest integer for your market's tick size
-            buy_price  = int(round(buy_price))
+            buy_price = int(round(buy_price))
             sell_price = int(round(sell_price))
 
             ##################################################################
@@ -230,7 +252,9 @@ class Trader:
                 max_order_size = 10
 
             allowable_buy = 50 - current_position  # how many we can still buy
-            allowable_sell = 50 + current_position # how many we can still sell (position can go -50)
+            allowable_sell = (
+                50 + current_position
+            )  # how many we can still sell (position can go -50)
 
             buy_quantity = min(max_order_size, max(0, allowable_buy))
             sell_quantity = min(max_order_size, max(0, allowable_sell))
@@ -245,10 +269,7 @@ class Trader:
         ##################################################################
         # 5. SERIALIZE UPDATED STATE
         ##################################################################
-        updated_data = {
-            "resin_avg_price": resin_avg_price,
-            "resin_count": resin_count
-        }
+        updated_data = {"resin_avg_price": resin_avg_price, "resin_count": resin_count}
         traderData = json.dumps(updated_data)
 
         ##################################################################
