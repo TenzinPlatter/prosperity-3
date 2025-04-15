@@ -1,0 +1,4 @@
+{
+  "max_profit": 164.0,
+  "constants": "ALPHA_EARLY = 0.001\nALPHA_LATE = 0.002\nBASESPREAD = 0.005\nADJUST_SCALE = 0.5\nMAX_ORDER_EARLY = 0.5\nMAX_ORDER_LATE = 0.25"
+}

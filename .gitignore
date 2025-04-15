@@ -1,2 +1,5 @@
 __pycache__/
 backtests/
+grid_search/logs/
+grid_search/target
+
