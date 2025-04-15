@@ -4,8 +4,24 @@ import statistics
 import math
 from typing import Dict, List
 import jsonpickle
+#Grid search Parameters: mispricing threshold, vol estimate, hedge batch, rolling spread alpha, initial rolling spread fraction
+# ---------------------------
+# Global Constants
+# ---------------------------
+DEFAULT_EST_VOL = 0.2               # Default estimated volatility if none is stored.
+TTE = 5.0 / 365.0                   # Time-to-expiry (5 days expressed as fraction of a year).
+R = 0.0                             # Risk-free rate (assumed zero in this simulation).
+UNDERLYING_LIMIT = 400              # Position limit for the underlying VOLCANIC_ROCK.
+OPTION_LIMIT = 200                  # Position limit for any individual option voucher.
+MAX_OPTION_TRADE_SIZE = 10          # Maximum number of options to trade per iteration.
+MISPRICE_THRESHOLD = 0.4            # Minimum absolute mispricing difference to trigger trading.
+HEDGE_BATCH = 5                     # Maximum number of underlying units to trade per hedging order.
+DEFAULT_ROLLING_SPREAD_FRACTION = 0.02  # Default fallback spread as 2% of underlying_mid.
+ALPHA_SPREAD = 0.1                  # Smoothing factor for updating the rolling spread.
 
-# Type aliases
+# ---------------------------
+# Type Aliases
+# ---------------------------
 Time = int
 Symbol = str
 Product = str
@@ -124,15 +140,11 @@ class TradingState:
 ################################################
 
 def cdf(x: float) -> float:
-    """
-    Approximation of the standard normal CDF using error function.
-    """
+    """Approximation of the standard normal CDF using error function."""
     return 0.5 * (1 + math.erf(x / math.sqrt(2)))
 
 def pdf(x: float) -> float:
-    """
-    Standard normal PDF.
-    """
+    """Standard normal PDF."""
     return 1.0 / math.sqrt(2 * math.pi) * math.exp(-0.5 * x * x)
 
 def black_scholes_call_price(
@@ -142,17 +154,12 @@ def black_scholes_call_price(
     r: float,  # interest rate
     sigma: float  # volatility
 ) -> float:
-    """
-    Basic Black–Scholes formula for a European call.
-    """
-    if T <= 0:
-        return max(S - K, 0)
-    if sigma <= 0:
+    """Basic Black–Scholes formula for a European call."""
+    if T <= 0 or sigma <= 0:
         return max(S - K, 0)
 
     d1 = (math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * math.sqrt(T))
     d2 = d1 - sigma * math.sqrt(T)
-
     return S * cdf(d1) - K * math.exp(-r * T) * cdf(d2)
 
 def black_scholes_call_delta(
@@ -162,11 +169,8 @@ def black_scholes_call_delta(
     r: float,
     sigma: float
 ) -> float:
-    """
-    Delta of a European call under Black–Scholes (N(d1)).
-    """
+    """Delta of a European call under Black–Scholes (N(d1))."""
     if T <= 0 or sigma <= 0:
-        # If no time or no vol, delta is either 0 or 1 if in-the-money
         return 1.0 if S > K else 0.0
 
     d1 = (math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * math.sqrt(T))
@@ -183,15 +187,15 @@ class Trader:
           - We consider the underlying commodity 'VOLCANIC_ROCK'.
           - We consider calls (vouchers) named 'VOLCANIC_ROCK_VOUCHER_{strike}'.
           - For each voucher, compute a theoretical BS price & delta using:
-              S = mid price of VOLCANIC_ROCK
-              T = 5/365
-              r = 0
-              sigma = stored in traderData or 0.2 default
+                S = mid price of VOLCANIC_ROCK
+                T = TTE (5/365)
+                r = R
+                sigma = stored in traderData or DEFAULT_EST_VOL
           - Compare the market mid to the theoretical price:
-              if market >> theo => short
-              if market << theo => buy
+                if market >> theo => short
+                if market << theo => buy
           - Hedge total delta with trades on 'VOLCANIC_ROCK'.
-          - Ensure position limits: ±200 each option, ±400 underlying.
+          - Ensure position limits: ±OPTION_LIMIT for each option, ±UNDERLYING_LIMIT underlying.
         """
 
         # -------- 0. Restore or init persistent data --------
@@ -199,24 +203,14 @@ class Trader:
         if state.traderData:
             try:
                 previous_data = jsonpickle.decode(state.traderData)
-            except:
+            except Exception:
                 previous_data = {}
 
-        # A simple volatility estimate we keep in traderData
-        est_vol = previous_data.get("est_vol", 0.2)
-
-        # TTE = 5/365 ~ 0.0137
-        TTE = 5.0 / 365.0
-        r = 0.0
-
-        # Underlying info
-        underlying_symbol = VOLCANIC_ROCK
-        underlying_limit = 400
-
-        # Option position limit
-        option_limit = 200
+        # Retrieve stored volatility or default
+        est_vol = previous_data.get("est_vol", DEFAULT_EST_VOL)
 
         # -------- 1. Get Underlying Mid Price --------
+        underlying_symbol = VOLCANIC_ROCK
         underlying_mid = previous_data.get("last_underlying_price", 100.0)
         if underlying_symbol in state.order_depths:
             depth_und = state.order_depths[underlying_symbol]
@@ -225,7 +219,6 @@ class Trader:
                 best_ask_live = min(depth_und.sell_orders.keys())
                 underlying_mid = (best_bid_live + best_ask_live) / 2.0
 
-        # Store for next time
         previous_data["last_underlying_price"] = underlying_mid
 
         # -------- 2. Build Orders for Options --------
@@ -233,24 +226,17 @@ class Trader:
         conversions = 0  # not used here
         net_option_delta = 0.0
 
-        # Threshold for deciding mispricing
-        misprice_threshold = 0.4
-
         # Evaluate each voucher option symbol for VOLCANIC_ROCK
         for symbol, depth in state.order_depths.items():
-            # Skip underlying
             if symbol == underlying_symbol:
                 continue
-
-            # Check if symbol is a voucher option
             if not symbol.startswith("VOLCANIC_ROCK_VOUCHER_"):
                 continue
 
-            # Parse strike value from symbol: "VOLCANIC_ROCK_VOUCHER_9500"
             try:
                 strike_part = symbol.split("_")[-1]
                 K = float(strike_part)
-            except:
+            except Exception:
                 continue
 
             # Compute market mid price for the option
@@ -259,32 +245,31 @@ class Trader:
                 best_ask = min(depth.sell_orders.keys())
                 option_mid = (best_bid + best_ask) / 2.0
             else:
-                continue  # Skip if no live quotes
+                continue
 
-            # Compute theoretical price and call delta using Black–Scholes
-            theo_price = black_scholes_call_price(underlying_mid, K, TTE, r, est_vol)
-            call_delta = black_scholes_call_delta(underlying_mid, K, TTE, r, est_vol)
-
+            # Compute theoretical price and delta
+            theo_price = black_scholes_call_price(underlying_mid, K, TTE, R, est_vol)
+            call_delta = black_scholes_call_delta(underlying_mid, K, TTE, R, est_vol)
             diff = option_mid - theo_price
+
             current_pos = state.position.get(symbol, 0)
             orders_for_symbol = []
 
-            # Overpriced: short the option
-            if diff > misprice_threshold:
-                max_shortable = option_limit + current_pos  # current_pos is negative if already short
+            # Overpriced: short the option if difference is greater than threshold
+            if diff > MISPRICE_THRESHOLD:
+                max_shortable = OPTION_LIMIT + current_pos
                 if max_shortable > 0:
-                    quantity = min(int(max_shortable), 10)  # trade up to 10 units
+                    quantity = min(int(max_shortable), MAX_OPTION_TRADE_SIZE)
                     if quantity > 0:
                         orders_for_symbol.append(Order(symbol, int(math.floor(best_bid)), -quantity))
-            # Underpriced: buy the option
-            elif diff < -misprice_threshold:
-                max_buyable = option_limit - current_pos
+            # Underpriced: buy the option if difference is lower than -threshold
+            elif diff < -MISPRICE_THRESHOLD:
+                max_buyable = OPTION_LIMIT - current_pos
                 if max_buyable > 0:
-                    quantity = min(int(max_buyable), 10)
+                    quantity = min(int(max_buyable), MAX_OPTION_TRADE_SIZE)
                     if quantity > 0:
                         orders_for_symbol.append(Order(symbol, int(math.ceil(best_ask)), quantity))
 
-            # Accumulate net delta from current position and proposed trades
             net_option_delta += current_pos * call_delta
             fill_qty = sum(o.quantity for o in orders_for_symbol)
             net_option_delta += fill_qty * call_delta
@@ -298,39 +283,35 @@ class Trader:
         delta_diff = desired_underlying_pos - current_underlying_pos
 
         # --- Rolling Spread logic for underlying fallback ---
-        # Retrieve the rolling spread from persistent data, defaulting to 2% of underlying_mid
-        rolling_spread = previous_data.get("rolling_spread", underlying_mid * 0.02)
+        rolling_spread = previous_data.get("rolling_spread", underlying_mid * DEFAULT_ROLLING_SPREAD_FRACTION)
         depth_und = state.order_depths.get(underlying_symbol, None)
         if depth_und and depth_und.buy_orders and depth_und.sell_orders:
             live_bid = max(depth_und.buy_orders.keys())
             live_ask = min(depth_und.sell_orders.keys())
             best_bid = live_bid
             best_ask = live_ask
-            # Update the rolling spread with the observed live spread
             current_spread = live_ask - live_bid
-            alpha_spread = 0.1  # smoothing factor
-            rolling_spread = rolling_spread * (1 - alpha_spread) + current_spread * alpha_spread
+            rolling_spread = rolling_spread * (1 - ALPHA_SPREAD) + current_spread * ALPHA_SPREAD
         else:
-            # Fallback: use the rolling spread to compute best_bid and best_ask
             best_bid = underlying_mid - rolling_spread / 2.0
             best_ask = underlying_mid + rolling_spread / 2.0
+
         previous_data["rolling_spread"] = rolling_spread
 
-        # Proceed with the hedging orders, up to a batch of 5
-        hedge_batch = 5
-        underlying_orders = []
+        # Place hedging orders in the underlying
+        hedge_orders = []
         if delta_diff > 0:
-            allowed_buy = underlying_limit - current_underlying_pos
-            buy_quantity = min(int(abs(delta_diff)), hedge_batch, int(allowed_buy))
+            allowed_buy = UNDERLYING_LIMIT - current_underlying_pos
+            buy_quantity = min(int(abs(delta_diff)), HEDGE_BATCH, int(allowed_buy))
             if buy_quantity > 0:
-                underlying_orders.append(Order(underlying_symbol, int(math.ceil(best_ask)), buy_quantity))
+                hedge_orders.append(Order(underlying_symbol, int(math.ceil(best_ask)), buy_quantity))
         elif delta_diff < 0:
-            allowed_sell = underlying_limit + current_underlying_pos
-            sell_quantity = min(int(abs(delta_diff)), hedge_batch, int(allowed_sell))
+            allowed_sell = UNDERLYING_LIMIT + current_underlying_pos
+            sell_quantity = min(int(abs(delta_diff)), HEDGE_BATCH, int(allowed_sell))
             if sell_quantity > 0:
-                underlying_orders.append(Order(underlying_symbol, int(math.floor(best_bid)), -sell_quantity))
-        if underlying_orders:
-            result[underlying_symbol] = underlying_orders
+                hedge_orders.append(Order(underlying_symbol, int(math.floor(best_bid)), -sell_quantity))
+        if hedge_orders:
+            result[underlying_symbol] = hedge_orders
 
         # -------- 4. Serialize Updated Trader Data --------
         new_trader_data = previous_data
