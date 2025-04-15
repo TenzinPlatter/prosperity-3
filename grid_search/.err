@@ -1,0 +1,1547 @@
+warning: unused imports: `File`, `create_dir_all`, and `read_dir`
+ --> src/main.rs:8:10
+  |
+8 |     fs::{File, create_dir_all, read_dir, read_to_string, write},
+  |          ^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: variable does not need to be mutable
+   --> src/main.rs:221:9
+    |
+221 |     let mut lines: Vec<_> = file.lines().map(String::from).collect();
+    |         ----^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: unused variable: `param_names`
+   --> src/main.rs:338:37
+    |
+338 | fn parse_constants(constants: &str, param_names: &[&String]) -> Option<TestResult> {
+    |                                     ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_param_names`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `state`
+   --> src/main.rs:431:9
+    |
+431 |     let state = Arc::new(Mutex::new(load_state(&config)));
+    |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_state`
+
+warning: variable `best_constants` is assigned to, but never used
+   --> src/main.rs:447:13
+    |
+447 |     let mut best_constants = String::new();
+    |             ^^^^^^^^^^^^^^
+    |
+    = note: consider using `_best_constants` instead
+
+warning: value assigned to `best_constants` is never read
+   --> src/main.rs:464:17
+    |
+464 |                 best_constants = constants.clone();
+    |                 ^^^^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: constant `TARGET_FILE` is never used
+  --> src/main.rs:17:7
+   |
+17 | const TARGET_FILE: &str = "../trader_resin_draft.py";
+   |       ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `STATE_FILE` is never used
+  --> src/main.rs:18:7
+   |
+18 | const STATE_FILE: &str = "../best.json";
+   |       ^^^^^^^^^^
+
+warning: constant `CSV_FILE` is never used
+  --> src/main.rs:21:7
+   |
+21 | const CSV_FILE: &str = "grid_search_results.csv";
+   |       ^^^^^^^^
+
+warning: struct `TestResult` is never constructed
+  --> src/main.rs:81:8
+   |
+81 | struct TestResult {
+   |        ^^^^^^^^^^
+
+warning: function `parse_constants` is never used
+   --> src/main.rs:338:4
+    |
+338 | fn parse_constants(constants: &str, param_names: &[&String]) -> Option<TestResult> {
+    |    ^^^^^^^^^^^^^^^
+
+warning: `rust` (bin "rust") generated 11 warnings (run `cargo fix --bin "rust"` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/rust`
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+thread '<unnamed>' panicked at src/main.rs:289:10:
+Failed to start command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+--------
+Loading configuration from config.json
+[DEBUG] Using logs directory: logs
+[DEBUG] Using state file: ../best.json
+[DEBUG] Using target file: ../Volcanic_Rock_trader.py
+Using 16 threads
+Generated 12600 combinations
+[DEBUG] Ensuring directories in: logs
+[DEBUG] Creating scripts directory: logs/0-99/scripts
+[DEBUG] Creating output directory: logs/0-99/output
+[DEBUG] Creating scripts directory: logs/100-199/scripts
+[DEBUG] Creating output directory: logs/100-199/output
+[DEBUG] Creating scripts directory: logs/200-299/scripts
+[DEBUG] Creating output directory: logs/200-299/output
+[DEBUG] Creating scripts directory: logs/300-399/scripts
+[DEBUG] Creating output directory: logs/300-399/output
+[DEBUG] Creating scripts directory: logs/400-499/scripts
+[DEBUG] Creating output directory: logs/400-499/output
+[DEBUG] Creating scripts directory: logs/500-599/scripts
+[DEBUG] Creating output directory: logs/500-599/output
+[DEBUG] Creating scripts directory: logs/600-699/scripts
+[DEBUG] Creating output directory: logs/600-699/output
+[DEBUG] Creating scripts directory: logs/700-799/scripts
+[DEBUG] Creating output directory: logs/700-799/output
+[DEBUG] Creating scripts directory: logs/800-899/scripts
+[DEBUG] Creating output directory: logs/800-899/output
+[DEBUG] Creating scripts directory: logs/900-999/scripts
+[DEBUG] Creating output directory: logs/900-999/output
+[DEBUG] Creating scripts directory: logs/1000-1099/scripts
+[DEBUG] Creating output directory: logs/1000-1099/output
+[DEBUG] Creating scripts directory: logs/1100-1199/scripts
+[DEBUG] Creating output directory: logs/1100-1199/output
+[DEBUG] Creating scripts directory: logs/1200-1299/scripts
+[DEBUG] Creating output directory: logs/1200-1299/output
+[DEBUG] Creating scripts directory: logs/1300-1399/scripts
+[DEBUG] Creating output directory: logs/1300-1399/output
+[DEBUG] Creating scripts directory: logs/1400-1499/scripts
+[DEBUG] Creating output directory: logs/1400-1499/output
+[DEBUG] Creating scripts directory: logs/1500-1599/scripts
+[DEBUG] Creating output directory: logs/1500-1599/output
+[DEBUG] Creating scripts directory: logs/1600-1699/scripts
+[DEBUG] Creating output directory: logs/1600-1699/output
+[DEBUG] Creating scripts directory: logs/1700-1799/scripts
+[DEBUG] Creating output directory: logs/1700-1799/output
+[DEBUG] Creating scripts directory: logs/1800-1899/scripts
+[DEBUG] Creating output directory: logs/1800-1899/output
+[DEBUG] Creating scripts directory: logs/1900-1999/scripts
+[DEBUG] Creating output directory: logs/1900-1999/output
+[DEBUG] Creating scripts directory: logs/2000-2099/scripts
+[DEBUG] Creating output directory: logs/2000-2099/output
+[DEBUG] Creating scripts directory: logs/2100-2199/scripts
+[DEBUG] Creating output directory: logs/2100-2199/output
+[DEBUG] Creating scripts directory: logs/2200-2299/scripts
+[DEBUG] Creating output directory: logs/2200-2299/output
+[DEBUG] Creating scripts directory: logs/2300-2399/scripts
+[DEBUG] Creating output directory: logs/2300-2399/output
+[DEBUG] Creating scripts directory: logs/2400-2499/scripts
+[DEBUG] Creating output directory: logs/2400-2499/output
+[DEBUG] Creating scripts directory: logs/2500-2599/scripts
+[DEBUG] Creating output directory: logs/2500-2599/output
+[DEBUG] Creating scripts directory: logs/2600-2699/scripts
+[DEBUG] Creating output directory: logs/2600-2699/output
+[DEBUG] Creating scripts directory: logs/2700-2799/scripts
+[DEBUG] Creating output directory: logs/2700-2799/output
+[DEBUG] Creating scripts directory: logs/2800-2899/scripts
+[DEBUG] Creating output directory: logs/2800-2899/output
+[DEBUG] Creating scripts directory: logs/2900-2999/scripts
+[DEBUG] Creating output directory: logs/2900-2999/output
+[DEBUG] Creating scripts directory: logs/3000-3099/scripts
+[DEBUG] Creating output directory: logs/3000-3099/output
+[DEBUG] Creating scripts directory: logs/3100-3199/scripts
+[DEBUG] Creating output directory: logs/3100-3199/output
+[DEBUG] Creating scripts directory: logs/3200-3299/scripts
+[DEBUG] Creating output directory: logs/3200-3299/output
+[DEBUG] Creating scripts directory: logs/3300-3399/scripts
+[DEBUG] Creating output directory: logs/3300-3399/output
+[DEBUG] Creating scripts directory: logs/3400-3499/scripts
+[DEBUG] Creating output directory: logs/3400-3499/output
+[DEBUG] Creating scripts directory: logs/3500-3599/scripts
+[DEBUG] Creating output directory: logs/3500-3599/output
+[DEBUG] Creating scripts directory: logs/3600-3699/scripts
+[DEBUG] Creating output directory: logs/3600-3699/output
+[DEBUG] Creating scripts directory: logs/3700-3799/scripts
+[DEBUG] Creating output directory: logs/3700-3799/output
+[DEBUG] Creating scripts directory: logs/3800-3899/scripts
+[DEBUG] Creating output directory: logs/3800-3899/output
+[DEBUG] Creating scripts directory: logs/3900-3999/scripts
+[DEBUG] Creating output directory: logs/3900-3999/output
+[DEBUG] Creating scripts directory: logs/4000-4099/scripts
+[DEBUG] Creating output directory: logs/4000-4099/output
+[DEBUG] Creating scripts directory: logs/4100-4199/scripts
+[DEBUG] Creating output directory: logs/4100-4199/output
+[DEBUG] Creating scripts directory: logs/4200-4299/scripts
+[DEBUG] Creating output directory: logs/4200-4299/output
+[DEBUG] Creating scripts directory: logs/4300-4399/scripts
+[DEBUG] Creating output directory: logs/4300-4399/output
+[DEBUG] Creating scripts directory: logs/4400-4499/scripts
+[DEBUG] Creating output directory: logs/4400-4499/output
+[DEBUG] Creating scripts directory: logs/4500-4599/scripts
+[DEBUG] Creating output directory: logs/4500-4599/output
+[DEBUG] Creating scripts directory: logs/4600-4699/scripts
+[DEBUG] Creating output directory: logs/4600-4699/output
+[DEBUG] Creating scripts directory: logs/4700-4799/scripts
+[DEBUG] Creating output directory: logs/4700-4799/output
+[DEBUG] Creating scripts directory: logs/4800-4899/scripts
+[DEBUG] Creating output directory: logs/4800-4899/output
+[DEBUG] Creating scripts directory: logs/4900-4999/scripts
+[DEBUG] Creating output directory: logs/4900-4999/output
+[DEBUG] Creating scripts directory: logs/5000-5099/scripts
+[DEBUG] Creating output directory: logs/5000-5099/output
+[DEBUG] Creating scripts directory: logs/5100-5199/scripts
+[DEBUG] Creating output directory: logs/5100-5199/output
+[DEBUG] Creating scripts directory: logs/5200-5299/scripts
+[DEBUG] Creating output directory: logs/5200-5299/output
+[DEBUG] Creating scripts directory: logs/5300-5399/scripts
+[DEBUG] Creating output directory: logs/5300-5399/output
+[DEBUG] Creating scripts directory: logs/5400-5499/scripts
+[DEBUG] Creating output directory: logs/5400-5499/output
+[DEBUG] Creating scripts directory: logs/5500-5599/scripts
+[DEBUG] Creating output directory: logs/5500-5599/output
+[DEBUG] Creating scripts directory: logs/5600-5699/scripts
+[DEBUG] Creating output directory: logs/5600-5699/output
+[DEBUG] Creating scripts directory: logs/5700-5799/scripts
+[DEBUG] Creating output directory: logs/5700-5799/output
+[DEBUG] Creating scripts directory: logs/5800-5899/scripts
+[DEBUG] Creating output directory: logs/5800-5899/output
+[DEBUG] Creating scripts directory: logs/5900-5999/scripts
+[DEBUG] Creating output directory: logs/5900-5999/output
+[DEBUG] Creating scripts directory: logs/6000-6099/scripts
+[DEBUG] Creating output directory: logs/6000-6099/output
+[DEBUG] Creating scripts directory: logs/6100-6199/scripts
+[DEBUG] Creating output directory: logs/6100-6199/output
+[DEBUG] Creating scripts directory: logs/6200-6299/scripts
+[DEBUG] Creating output directory: logs/6200-6299/output
+[DEBUG] Creating scripts directory: logs/6300-6399/scripts
+[DEBUG] Creating output directory: logs/6300-6399/output
+[DEBUG] Creating scripts directory: logs/6400-6499/scripts
+[DEBUG] Creating output directory: logs/6400-6499/output
+[DEBUG] Creating scripts directory: logs/6500-6599/scripts
+[DEBUG] Creating output directory: logs/6500-6599/output
+[DEBUG] Creating scripts directory: logs/6600-6699/scripts
+[DEBUG] Creating output directory: logs/6600-6699/output
+[DEBUG] Creating scripts directory: logs/6700-6799/scripts
+[DEBUG] Creating output directory: logs/6700-6799/output
+[DEBUG] Creating scripts directory: logs/6800-6899/scripts
+[DEBUG] Creating output directory: logs/6800-6899/output
+[DEBUG] Creating scripts directory: logs/6900-6999/scripts
+[DEBUG] Creating output directory: logs/6900-6999/output
+[DEBUG] Creating scripts directory: logs/7000-7099/scripts
+[DEBUG] Creating output directory: logs/7000-7099/output
+[DEBUG] Creating scripts directory: logs/7100-7199/scripts
+[DEBUG] Creating output directory: logs/7100-7199/output
+[DEBUG] Creating scripts directory: logs/7200-7299/scripts
+[DEBUG] Creating output directory: logs/7200-7299/output
+[DEBUG] Creating scripts directory: logs/7300-7399/scripts
+[DEBUG] Creating output directory: logs/7300-7399/output
+[DEBUG] Creating scripts directory: logs/7400-7499/scripts
+[DEBUG] Creating output directory: logs/7400-7499/output
+[DEBUG] Creating scripts directory: logs/7500-7599/scripts
+[DEBUG] Creating output directory: logs/7500-7599/output
+[DEBUG] Creating scripts directory: logs/7600-7699/scripts
+[DEBUG] Creating output directory: logs/7600-7699/output
+[DEBUG] Creating scripts directory: logs/7700-7799/scripts
+[DEBUG] Creating output directory: logs/7700-7799/output
+[DEBUG] Creating scripts directory: logs/7800-7899/scripts
+[DEBUG] Creating output directory: logs/7800-7899/output
+[DEBUG] Creating scripts directory: logs/7900-7999/scripts
+[DEBUG] Creating output directory: logs/7900-7999/output
+[DEBUG] Creating scripts directory: logs/8000-8099/scripts
+[DEBUG] Creating output directory: logs/8000-8099/output
+[DEBUG] Creating scripts directory: logs/8100-8199/scripts
+[DEBUG] Creating output directory: logs/8100-8199/output
+[DEBUG] Creating scripts directory: logs/8200-8299/scripts
+[DEBUG] Creating output directory: logs/8200-8299/output
+[DEBUG] Creating scripts directory: logs/8300-8399/scripts
+[DEBUG] Creating output directory: logs/8300-8399/output
+[DEBUG] Creating scripts directory: logs/8400-8499/scripts
+[DEBUG] Creating output directory: logs/8400-8499/output
+[DEBUG] Creating scripts directory: logs/8500-8599/scripts
+[DEBUG] Creating output directory: logs/8500-8599/output
+[DEBUG] Creating scripts directory: logs/8600-8699/scripts
+[DEBUG] Creating output directory: logs/8600-8699/output
+[DEBUG] Creating scripts directory: logs/8700-8799/scripts
+[DEBUG] Creating output directory: logs/8700-8799/output
+[DEBUG] Creating scripts directory: logs/8800-8899/scripts
+[DEBUG] Creating output directory: logs/8800-8899/output
+[DEBUG] Creating scripts directory: logs/8900-8999/scripts
+[DEBUG] Creating output directory: logs/8900-8999/output
+[DEBUG] Creating scripts directory: logs/9000-9099/scripts
+[DEBUG] Creating output directory: logs/9000-9099/output
+[DEBUG] Creating scripts directory: logs/9100-9199/scripts
+[DEBUG] Creating output directory: logs/9100-9199/output
+[DEBUG] Creating scripts directory: logs/9200-9299/scripts
+[DEBUG] Creating output directory: logs/9200-9299/output
+[DEBUG] Creating scripts directory: logs/9300-9399/scripts
+[DEBUG] Creating output directory: logs/9300-9399/output
+[DEBUG] Creating scripts directory: logs/9400-9499/scripts
+[DEBUG] Creating output directory: logs/9400-9499/output
+[DEBUG] Creating scripts directory: logs/9500-9599/scripts
+[DEBUG] Creating output directory: logs/9500-9599/output
+[DEBUG] Creating scripts directory: logs/9600-9699/scripts
+[DEBUG] Creating output directory: logs/9600-9699/output
+[DEBUG] Creating scripts directory: logs/9700-9799/scripts
+[DEBUG] Creating output directory: logs/9700-9799/output
+[DEBUG] Creating scripts directory: logs/9800-9899/scripts
+[DEBUG] Creating output directory: logs/9800-9899/output
+[DEBUG] Creating scripts directory: logs/9900-9999/scripts
+[DEBUG] Creating output directory: logs/9900-9999/output
+[DEBUG] Creating scripts directory: logs/10000-10099/scripts
+[DEBUG] Creating output directory: logs/10000-10099/output
+[DEBUG] Creating scripts directory: logs/10100-10199/scripts
+[DEBUG] Creating output directory: logs/10100-10199/output
+[DEBUG] Creating scripts directory: logs/10200-10299/scripts
+[DEBUG] Creating output directory: logs/10200-10299/output
+[DEBUG] Creating scripts directory: logs/10300-10399/scripts
+[DEBUG] Creating output directory: logs/10300-10399/output
+[DEBUG] Creating scripts directory: logs/10400-10499/scripts
+[DEBUG] Creating output directory: logs/10400-10499/output
+[DEBUG] Creating scripts directory: logs/10500-10599/scripts
+[DEBUG] Creating output directory: logs/10500-10599/output
+[DEBUG] Creating scripts directory: logs/10600-10699/scripts
+[DEBUG] Creating output directory: logs/10600-10699/output
+[DEBUG] Creating scripts directory: logs/10700-10799/scripts
+[DEBUG] Creating output directory: logs/10700-10799/output
+[DEBUG] Creating scripts directory: logs/10800-10899/scripts
+[DEBUG] Creating output directory: logs/10800-10899/output
+[DEBUG] Creating scripts directory: logs/10900-10999/scripts
+[DEBUG] Creating output directory: logs/10900-10999/output
+[DEBUG] Creating scripts directory: logs/11000-11099/scripts
+[DEBUG] Creating output directory: logs/11000-11099/output
+[DEBUG] Creating scripts directory: logs/11100-11199/scripts
+[DEBUG] Creating output directory: logs/11100-11199/output
+[DEBUG] Creating scripts directory: logs/11200-11299/scripts
+[DEBUG] Creating output directory: logs/11200-11299/output
+[DEBUG] Creating scripts directory: logs/11300-11399/scripts
+[DEBUG] Creating output directory: logs/11300-11399/output
+[DEBUG] Creating scripts directory: logs/11400-11499/scripts
+[DEBUG] Creating output directory: logs/11400-11499/output
+[DEBUG] Creating scripts directory: logs/11500-11599/scripts
+[DEBUG] Creating output directory: logs/11500-11599/output
+[DEBUG] Creating scripts directory: logs/11600-11699/scripts
+[DEBUG] Creating output directory: logs/11600-11699/output
+[DEBUG] Creating scripts directory: logs/11700-11799/scripts
+[DEBUG] Creating output directory: logs/11700-11799/output
+[DEBUG] Creating scripts directory: logs/11800-11899/scripts
+[DEBUG] Creating output directory: logs/11800-11899/output
+[DEBUG] Creating scripts directory: logs/11900-11999/scripts
+[DEBUG] Creating output directory: logs/11900-11999/output
+[DEBUG] Creating scripts directory: logs/12000-12099/scripts
+[DEBUG] Creating output directory: logs/12000-12099/output
+[DEBUG] Creating scripts directory: logs/12100-12199/scripts
+[DEBUG] Creating output directory: logs/12100-12199/output
+[DEBUG] Creating scripts directory: logs/12200-12299/scripts
+[DEBUG] Creating output directory: logs/12200-12299/output
+[DEBUG] Creating scripts directory: logs/12300-12399/scripts
+[DEBUG] Creating output directory: logs/12300-12399/output
+[DEBUG] Creating scripts directory: logs/12400-12499/scripts
+[DEBUG] Creating output directory: logs/12400-12499/output
+[DEBUG] Creating scripts directory: logs/12500-12599/scripts
+[DEBUG] Creating output directory: logs/12500-12599/output
+Starting grid search...
+[DEBUG] Processing script 0...
+[DEBUG] Processing script 3...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 29...
+[DEBUG] Processing script 1...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 2...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 18...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 6...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 37...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 12...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 87...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 25...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 50...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 31...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 28...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_3.py
+[DEBUG] Processing script 75...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_1.py
+[DEBUG] Script path: logs/0-99/scripts/script_2.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_3.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_6.py
+[DEBUG] Script path: logs/0-99/scripts/script_0.py
+[DEBUG] Processing script 62...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_6.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_1.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_18.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_0.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_18.py
+[DEBUG] Script path: logs/0-99/scripts/script_25.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_12.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_25.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_37.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_12.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_87.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_37.py
+[DEBUG] Script path: logs/0-99/scripts/script_29.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_29.py
+[DEBUG] Log path: logs/0-99/output/log_6.txt
+[DEBUG] Log path: logs/0-99/output/log_1.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_87.py
+[DEBUG] Log path: logs/0-99/output/log_3.txt
+[DEBUG] Script path: logs/0-99/scripts/script_31.py
+[DEBUG] Script path: logs/0-99/scripts/script_75.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_50.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_6.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_28.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_1.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_31.py
+[DEBUG] Log path: logs/0-99/output/log_25.txt
+[DEBUG] Running command for script 6...
+[DEBUG] Writing script to: logs/0-99/scripts/script_50.py
+[DEBUG] Creating log file: logs/0-99/output/log_3.txt
+[DEBUG] Log path: logs/0-99/output/log_0.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_18.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_75.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_2.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 3...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_62.py
+[DEBUG] Log path: logs/0-99/output/log_37.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_62.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_28.py
+[DEBUG] Creating log file: logs/0-99/output/log_0.txt
+[DEBUG] Log path: logs/0-99/output/log_12.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_87.txt
+[DEBUG] Creating log file: logs/0-99/output/log_12.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_87.txt
+[DEBUG] Log path: logs/0-99/output/log_29.txt
+[DEBUG] Running command for script 1...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_18.txt
+[DEBUG] Running command for script 12...
+[DEBUG] Creating log file: logs/0-99/output/log_29.txt
+[DEBUG] Creating log file: logs/0-99/output/log_25.txt
+[DEBUG] Running command for script 0...
+[DEBUG] Creating log file: logs/0-99/output/log_37.txt
+[DEBUG] Log path: logs/0-99/output/log_75.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_50.txt
+[DEBUG] Creating log file: logs/0-99/output/log_75.txt
+[DEBUG] Log path: logs/0-99/output/log_31.txt
+[DEBUG] Log path: logs/0-99/output/log_2.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 87...
+[DEBUG] Running command for script 18...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 29...
+[DEBUG] Creating log file: logs/0-99/output/log_31.txt
+[DEBUG] Processing script 7...
+[DEBUG] Processing script 4...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_50.txt
+[DEBUG] Running command for script 31...
+[DEBUG] Running command for script 37...
+[DEBUG] Running command for script 75...
+[DEBUG] Running command for script 50...
+[DEBUG] Log path: logs/0-99/output/log_28.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_28.txt
+[DEBUG] Processing script 13...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 15...
+[DEBUG] Processing script 19...
+[DEBUG] Creating log file: logs/0-99/output/log_2.txt
+[DEBUG] Script path: logs/0-99/scripts/script_4.py
+[DEBUG] Script path: logs/0-99/scripts/script_7.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_62.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 25...
+[DEBUG] Running command for script 2...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_62.txt
+[DEBUG] Running command for script 28...
+[DEBUG] Processing script 51...
+[DEBUG] Processing script 30...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 68...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 76...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 32...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 62...
+[DEBUG] Writing script to: logs/0-99/scripts/script_7.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_4.py
+[DEBUG] Processing script 38...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 56...
+[DEBUG] Script path: logs/0-99/scripts/script_15.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 26...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_19.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_30.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_13.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_68.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_4.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_68.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_19.py
+[DEBUG] Log path: logs/0-99/output/log_7.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_30.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_13.py
+[DEBUG] Processing script 63...
+[DEBUG] Processing script 88...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_4.txt
+[DEBUG] Script path: logs/0-99/scripts/script_32.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log file: logs/0-99/output/log_7.txt
+[DEBUG] Script path: logs/0-99/scripts/script_76.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_38.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_76.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_38.py
+[DEBUG] Running command for script 7...
+[DEBUG] Processing script 5...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_51.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_51.py
+[DEBUG] Log path: logs/0-99/output/log_68.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_68.txt
+[DEBUG] Log path: logs/0-99/output/log_19.txt
+[DEBUG] Log path: logs/0-99/output/log_30.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_32.py
+[DEBUG] Log path: logs/0-99/output/log_13.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 68...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_15.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_56.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_76.txt
+[DEBUG] Creating log file: logs/0-99/output/log_30.txt
+[DEBUG] Log path: logs/0-99/output/log_51.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_26.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 4...
+[DEBUG] Writing script to: logs/0-99/scripts/script_26.py
+[DEBUG] Script path: logs/0-99/scripts/script_88.py
+[DEBUG] Creating log file: logs/0-99/output/log_13.txt
+[DEBUG] Running command for script 30...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_19.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_5.py
+[DEBUG] Running command for script 13...
+[DEBUG] Processing script 8...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_38.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_88.py
+[DEBUG] Log path: logs/0-99/output/log_32.txt
+[DEBUG] Running command for script 19...
+[DEBUG] Log path: logs/0-99/output/log_15.txt
+[DEBUG] Creating log file: logs/0-99/output/log_51.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_56.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_76.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log file: logs/0-99/output/log_32.txt
+[DEBUG] Log path: logs/0-99/output/log_26.txt
+[DEBUG] Processing script 69...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 51...
+[DEBUG] Running command for script 76...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 16...
+[DEBUG] Creating log file: logs/0-99/output/log_15.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_26.txt
+[DEBUG] Creating log file: logs/0-99/output/log_38.txt
+[DEBUG] Script path: logs/0-99/scripts/script_63.py
+[DEBUG] Log path: logs/0-99/output/log_88.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_88.txt
+[DEBUG] Running command for script 26...
+[DEBUG] Log path: logs/0-99/output/log_56.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_56.txt
+[DEBUG] Processing script 20...
+[DEBUG] Writing script to: logs/0-99/scripts/script_5.py
+[DEBUG] Running command for script 38...
+[DEBUG] Processing script 14...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 15...
+[DEBUG] Running command for script 32...
+[DEBUG] Running command for script 56...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_8.py
+[DEBUG] Processing script 52...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_69.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 34...
+[DEBUG] Writing script to: logs/0-99/scripts/script_69.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 88...
+[DEBUG] Processing script 77...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_16.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_16.py
+[DEBUG] Log path: logs/0-99/output/log_5.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_5.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_63.py
+[DEBUG] Processing script 27...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_8.py
+[DEBUG] Running command for script 5...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_69.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 59...
+[DEBUG] Creating log file: logs/0-99/output/log_69.txt
+[DEBUG] Script path: logs/0-99/scripts/script_20.py
+[DEBUG] Script path: logs/0-99/scripts/script_52.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 33...
+[DEBUG] Script path: logs/0-99/scripts/script_14.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_14.py
+[DEBUG] Running command for script 69...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_16.txt
+[DEBUG] Script path: logs/0-99/scripts/script_77.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_34.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_20.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_52.py
+[DEBUG] Processing script 39...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_77.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_34.py
+[DEBUG] Log path: logs/0-99/output/log_8.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 60...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 57...
+[DEBUG] Log path: logs/0-99/output/log_14.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_16.txt
+[DEBUG] Log path: logs/0-99/output/log_63.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 70...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_52.txt
+[DEBUG] Creating log file: logs/0-99/output/log_14.txt
+[DEBUG] Creating log file: logs/0-99/output/log_63.txt
+[DEBUG] Script path: logs/0-99/scripts/script_33.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_33.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 14...
+[DEBUG] Creating log file: logs/0-99/output/log_8.txt
+[DEBUG] Running command for script 63...
+[DEBUG] Script path: logs/0-99/scripts/script_59.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 16...
+[DEBUG] Writing script to: logs/0-99/scripts/script_59.py
+[DEBUG] Log path: logs/0-99/output/log_77.txt
+[DEBUG] Log path: logs/0-99/output/log_34.txt
+[DEBUG] Script path: logs/0-99/scripts/script_27.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_20.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_20.txt
+[DEBUG] Script path: logs/0-99/scripts/script_60.py
+[DEBUG] Creating log file: logs/0-99/output/log_77.txt
+[DEBUG] Creating log file: logs/0-99/output/log_52.txt
+[DEBUG] Script path: logs/0-99/scripts/script_39.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 20...
+[DEBUG] Running command for script 77...
+[DEBUG] Creating log file: logs/0-99/output/log_34.txt
+[DEBUG] Script path: logs/0-99/scripts/script_57.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_60.py
+[DEBUG] Log path: logs/0-99/output/log_33.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 8...
+[DEBUG] Writing script to: logs/0-99/scripts/script_39.py
+[DEBUG] Processing script 89...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_70.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_27.py
+[DEBUG] Processing script 17...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 34...
+[DEBUG] Creating log file: logs/0-99/output/log_33.txt
+[DEBUG] Log path: logs/0-99/output/log_59.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 35...
+[DEBUG] Creating log file: logs/0-99/output/log_59.txt
+[DEBUG] Processing script 64...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 33...
+[DEBUG] Running command for script 52...
+[DEBUG] Processing script 78...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_39.txt
+[DEBUG] Processing script 21...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_57.py
+[DEBUG] Log path: logs/0-99/output/log_60.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 59...
+[DEBUG] Script path: logs/0-99/scripts/script_89.py
+[DEBUG] Processing script 9...
+[DEBUG] Log path: logs/0-99/output/log_27.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_39.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 10...
+[DEBUG] Script path: logs/0-99/scripts/script_17.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_17.py
+[DEBUG] Running command for script 39...
+[DEBUG] Writing script to: logs/0-99/scripts/script_70.py
+[DEBUG] Processing script 53...
+[DEBUG] Writing script to: logs/0-99/scripts/script_89.py
+[DEBUG] Processing script 71...
+[DEBUG] Script path: logs/0-99/scripts/script_78.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_60.txt
+[DEBUG] Script path: logs/0-99/scripts/script_64.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 73...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_78.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 60...
+[DEBUG] Creating log file: logs/0-99/output/log_27.txt
+[DEBUG] Script path: logs/0-99/scripts/script_35.py
+[DEBUG] Script path: logs/0-99/scripts/script_9.py
+[DEBUG] Script path: logs/0-99/scripts/script_21.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_64.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_21.py
+[DEBUG] Log path: logs/0-99/output/log_57.txt
+[DEBUG] Log path: logs/0-99/output/log_70.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 40...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_9.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 27...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_70.txt
+[DEBUG] Script path: logs/0-99/scripts/script_53.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_35.py
+[DEBUG] Log path: logs/0-99/output/log_78.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_57.txt
+[DEBUG] Creating log file: logs/0-99/output/log_78.txt
+[DEBUG] Processing script 61...
+[DEBUG] Running command for script 70...
+[DEBUG] Log path: logs/0-99/output/log_89.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_64.txt
+[DEBUG] Script path: logs/0-99/scripts/script_10.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 57...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 78...
+[DEBUG] Writing script to: logs/0-99/scripts/script_53.py
+[DEBUG] Script path: logs/0-99/scripts/script_71.py
+[DEBUG] Log path: logs/0-99/output/log_9.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_9.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_53.txt
+[DEBUG] Creating log file: logs/0-99/output/log_89.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_10.py
+[DEBUG] Processing script 54...
+[DEBUG] Creating log file: logs/0-99/output/log_64.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 9...
+[DEBUG] Running command for script 89...
+[DEBUG] Log path: logs/0-99/output/log_35.txt
+[DEBUG] Processing script 43...
+[DEBUG] Script path: logs/0-99/scripts/script_73.py
+[DEBUG] Script path: logs/0-99/scripts/script_40.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_21.txt
+[DEBUG] Log path: logs/0-99/output/log_17.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_71.py
+[DEBUG] Processing script 79...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 58...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_35.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_73.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_40.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_53.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_21.txt
+[DEBUG] Running command for script 64...
+[DEBUG] Processing script 72...
+[DEBUG] Running command for script 53...
+[DEBUG] Log path: logs/0-99/output/log_71.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 21...
+[DEBUG] Running command for script 35...
+[DEBUG] Processing script 90...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_17.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_58.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log file: logs/0-99/output/log_71.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_58.py
+[DEBUG] Running command for script 17...
+[DEBUG] Log path: logs/0-99/output/log_73.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_54.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_10.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_40.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_54.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_73.txt
+[DEBUG] Running command for script 71...
+[DEBUG] Creating log file: logs/0-99/output/log_10.txt
+[DEBUG] Processing script 65...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_43.py
+[DEBUG] Creating log file: logs/0-99/output/log_40.txt
+[DEBUG] Running command for script 73...
+[DEBUG] Log path: logs/0-99/output/log_58.txt
+[DEBUG] Processing script 22...
+[DEBUG] Script path: logs/0-99/scripts/script_90.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_61.py
+[DEBUG] Creating log file: logs/0-99/output/log_58.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_72.py
+[DEBUG] Running command for script 40...
+[DEBUG] Running command for script 10...
+[DEBUG] Writing script to: logs/0-99/scripts/script_90.py
+[DEBUG] Processing script 36...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_54.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 41...
+[DEBUG] Processing script 66...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_54.txt
+[DEBUG] Processing script 55...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 58...
+[DEBUG] Processing script 74...
+[DEBUG] Writing script to: logs/0-99/scripts/script_61.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 54...
+[DEBUG] Script path: logs/0-99/scripts/script_79.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_65.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_79.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_90.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_65.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_90.txt
+[DEBUG] Script path: logs/0-99/scripts/script_36.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_36.py
+[DEBUG] Processing script 42...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 11...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 90...
+[DEBUG] Script path: logs/0-99/scripts/script_41.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_66.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_66.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_41.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_55.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_79.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 23...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_65.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_79.txt
+[DEBUG] Processing script 46...
+[DEBUG] Log path: logs/0-99/output/log_61.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_55.py
+[DEBUG] Creating log file: logs/0-99/output/log_61.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_43.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_72.py
+[DEBUG] Creating log file: logs/0-99/output/log_65.txt
+[DEBUG] Script path: logs/0-99/scripts/script_74.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 61...
+[DEBUG] Script path: logs/0-99/scripts/script_22.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 65...
+[DEBUG] Log path: logs/0-99/output/log_36.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 91...
+[DEBUG] Creating log file: logs/0-99/output/log_36.txt
+[DEBUG] Script path: logs/0-99/scripts/script_42.py
+[DEBUG] Script path: logs/0-99/scripts/script_11.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_66.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_74.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_22.py
+[DEBUG] Log path: logs/0-99/output/log_41.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 36...
+[DEBUG] Writing script to: logs/0-99/scripts/script_42.py
+[DEBUG] Log path: logs/0-99/output/log_55.txt
+[DEBUG] Log path: logs/0-99/output/log_43.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_55.txt
+[DEBUG] Creating log file: logs/0-99/output/log_66.txt
+[DEBUG] Script path: logs/0-99/scripts/script_23.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Log path: logs/0-99/output/log_72.txt
+[DEBUG] Running command for script 79...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_41.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_23.py
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Processing script 93...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_72.txt
+[DEBUG] Log path: logs/0-99/output/log_74.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_46.py
+[DEBUG] Running command for script 66...
+[DEBUG] Log path: logs/0-99/output/log_22.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_43.txt
+[DEBUG] Running command for script 72...
+[DEBUG] Writing script to: logs/0-99/scripts/script_11.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 41...
+[DEBUG] Processing script 48...
+[DEBUG] Running command for script 43...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 55...
+[DEBUG] Creating log file: logs/0-99/output/log_22.txt
+[DEBUG] Log path: logs/0-99/output/log_23.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_74.txt
+[DEBUG] Log path: logs/0-99/output/log_42.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_46.py
+[DEBUG] Creating log file: logs/0-99/output/log_23.txt
+[DEBUG] Script path: logs/0-99/scripts/script_91.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 80...
+[DEBUG] Running command for script 74...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 23...
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_93.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 22...
+[DEBUG] Log path: logs/0-99/output/log_11.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Writing script to: logs/0-99/scripts/script_91.py
+[DEBUG] Processing script 67...
+[DEBUG] Processing script 47...
+[DEBUG] Processing script 24...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_93.py
+[DEBUG] Creating log file: logs/0-99/output/log_11.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_42.txt
+[DEBUG] Processing script 44...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_48.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 96...
+[DEBUG] Script path: logs/0-99/scripts/script_80.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 98...
+[DEBUG] Running command for script 11...
+[DEBUG] Writing script to: logs/0-99/scripts/script_48.py
+[DEBUG] Log path: logs/0-99/output/log_91.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_91.txt
+[DEBUG] Running command for script 42...
+[DEBUG] Log path: logs/0-99/output/log_93.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_93.txt
+[DEBUG] Running command for script 91...
+[DEBUG] Writing script to: logs/0-99/scripts/script_80.py
+[DEBUG] Processing script 81...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 94...
+[DEBUG] Script path: logs/0-99/scripts/script_47.py
+[DEBUG] Log path: logs/0-99/output/log_46.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_24.py
+[DEBUG] Creating log file: logs/0-99/output/log_46.txt
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_24.py
+[DEBUG] Running command for script 93...
+[DEBUG] Script path: logs/0-99/scripts/script_67.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 46...
+[DEBUG] Writing script to: logs/0-99/scripts/script_67.py
+[DEBUG] Log path: logs/0-99/output/log_48.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_48.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Processing script 95...
+[DEBUG] Processing script 49...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_96.py
+[DEBUG] Running command for script 48...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_80.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_96.py
+[DEBUG] Log path: logs/0-99/output/log_24.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_80.txt
+[DEBUG] Script path: logs/0-99/scripts/script_98.py
+[DEBUG] Processing script 97...
+[DEBUG] Processing script 45...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_44.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_98.py
+[DEBUG] Processing script 92...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_94.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_94.py
+[DEBUG] Processing script 99...
+[DEBUG] Script path: logs/0-99/scripts/script_95.py
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 80...
+[DEBUG] Writing script to: logs/0-99/scripts/script_44.py
+[DEBUG] Script path: logs/0-99/scripts/script_81.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Processing script 84...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Creating log file: logs/0-99/output/log_24.txt
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_47.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_95.py
+[DEBUG] Log path: logs/0-99/output/log_67.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 24...
+[DEBUG] Creating log file: logs/0-99/output/log_67.txt
+[DEBUG] Log path: logs/0-99/output/log_98.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_98.txt
+[DEBUG] Running command for script 67...
+[DEBUG] Script path: logs/0-99/scripts/script_92.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 98...
+[DEBUG] Writing script to: logs/0-99/scripts/script_92.py
+[DEBUG] Log path: logs/0-99/output/log_44.txt
+[DEBUG] Script path: logs/0-99/scripts/script_45.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_45.py
+[DEBUG] Log path: logs/0-99/output/log_47.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_96.txt
+[DEBUG] Creating log file: logs/0-99/output/log_44.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Log path: logs/0-99/output/log_94.txt
+[DEBUG] Log path: logs/0-99/output/log_95.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_47.txt
+[DEBUG] Processing script 85...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_97.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Script path: logs/0-99/scripts/script_49.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_81.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_49.py
+[DEBUG] Running command for script 44...
+[DEBUG] Script path: logs/0-99/scripts/script_99.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log file: logs/0-99/output/log_94.txt
+[DEBUG] Log path: logs/0-99/output/log_92.txt
+[DEBUG] Processing script 86...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Running command for script 47...
+[DEBUG] Script path: logs/0-99/scripts/script_84.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_84.py
+[DEBUG] Processing script 82...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Log path: logs/0-99/output/log_45.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_95.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_99.py
+[DEBUG] Creating log file: logs/0-99/output/log_96.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_92.txt
+[DEBUG] Running command for script 95...
+[DEBUG] Processing script 83...
+[DEBUG] Reading source file: ../Volcanic_Rock_trader.py
+[DEBUG] Script path: logs/0-99/scripts/script_85.py
+[DEBUG] Running command for script 96...
+[DEBUG] Log path: logs/0-99/output/log_49.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_49.txt
+[DEBUG] Log path: logs/0-99/output/log_81.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Creating log file: logs/0-99/output/log_81.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_85.py
+[DEBUG] Running command for script 92...
+[DEBUG] Log path: logs/0-99/output/log_84.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 49...
+[DEBUG] Creating log file: logs/0-99/output/log_84.txt
+[DEBUG] Running command for script 81...
+[DEBUG] Log path: logs/0-99/output/log_99.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Script path: logs/0-99/scripts/script_86.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Running command for script 94...
+[DEBUG] Script path: logs/0-99/scripts/script_82.py
+[DEBUG] Creating log file: logs/0-99/output/log_99.txt
+[DEBUG] Creating log file: logs/0-99/output/log_45.txt
+[DEBUG] Running command for script 99...
+[DEBUG] Log path: logs/0-99/output/log_85.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 45...
+[DEBUG] Creating log file: logs/0-99/output/log_85.txt
+[DEBUG] Writing script to: logs/0-99/scripts/script_97.py
+[DEBUG] Writing script to: logs/0-99/scripts/script_86.py
+[DEBUG] Running command for script 84...
+[DEBUG] Running command for script 85...
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_82.py
+[DEBUG] Log path: logs/0-99/output/log_86.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_86.txt
+[DEBUG] Log path: logs/0-99/output/log_97.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_97.txt
+[DEBUG] Running command for script 86...
+[DEBUG] Log path: logs/0-99/output/log_82.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Running command for script 97...
+[DEBUG] Creating log file: logs/0-99/output/log_82.txt
+[DEBUG] Script path: logs/0-99/scripts/script_83.py
+[DEBUG] Creating script directory: logs/0-99/scripts
+[DEBUG] Writing script to: logs/0-99/scripts/script_83.py
+[DEBUG] Running command for script 82...
+[DEBUG] Log path: logs/0-99/output/log_83.txt
+[DEBUG] Creating log directory: logs/0-99/output
+[DEBUG] Creating log file: logs/0-99/output/log_83.txt
+[DEBUG] Running command for script 83...
