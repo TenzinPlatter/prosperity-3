@@ -3,6 +3,7 @@ use indicatif::{ProgressBar, ProgressStyle};
 use parking_lot::Mutex;
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::io::{self, Write};
 use std::{
     fs::{File, create_dir_all, read_dir, read_to_string, write},
@@ -12,7 +13,6 @@ use std::{
     time::Instant,
 };
 use wait_timeout::ChildExt;
-use std::collections::HashMap;
 
 const TARGET_FILE: &str = "../trader_resin_draft.py";
 const STATE_FILE: &str = "../best.json";
@@ -163,7 +163,7 @@ fn ensure_directories(total_scripts: usize, logs_dir: &str) -> std::io::Result<(
         let subdir_path = format!("{}/{}-{}", logs_dir, subdir, subdir + 99);
         let scripts_dir = format!("{}/{}", subdir_path, SCRIPTS_SUBDIR);
         let output_dir = format!("{}/{}", subdir_path, OUTPUT_SUBDIR);
-        
+
         std::fs::create_dir_all(&scripts_dir)?;
         std::fs::create_dir_all(&output_dir)?;
     }
@@ -175,7 +175,7 @@ fn cleanup_directory(total_scripts: usize, logs_dir: &str) -> std::io::Result<()
     for i in 0..num_dirs {
         let subdir = i * 100;
         let subdir_path = format!("{}/{}-{}", logs_dir, subdir, subdir + 99);
-        
+
         let scripts_dir = format!("{}/{}", subdir_path, SCRIPTS_SUBDIR);
         if Path::new(&scripts_dir).exists() {
             for entry in std::fs::read_dir(&scripts_dir)? {
@@ -186,7 +186,7 @@ fn cleanup_directory(total_scripts: usize, logs_dir: &str) -> std::io::Result<()
                 }
             }
         }
-        
+
         let output_dir = format!("{}/{}", subdir_path, OUTPUT_SUBDIR);
         if Path::new(&output_dir).exists() {
             for entry in std::fs::read_dir(&output_dir)? {
@@ -201,7 +201,11 @@ fn cleanup_directory(total_scripts: usize, logs_dir: &str) -> std::io::Result<()
     Ok(())
 }
 
-fn create_script_with_constants(constants: &str, index: usize, config: &Config) -> std::io::Result<String> {
+fn create_script_with_constants(
+    constants: &str,
+    index: usize,
+    config: &Config,
+) -> std::io::Result<String> {
     let file = read_to_string(&config.python_script)?;
     let mut lines: Vec<_> = file.lines().map(String::from).collect();
 
@@ -223,27 +227,31 @@ fn create_script_with_constants(constants: &str, index: usize, config: &Config) 
     Ok(script_path)
 }
 
-fn run_and_get_profit(constants: &str, index: usize, config: &Config) -> Result<f64, Box<dyn std::error::Error>> {
+fn run_and_get_profit(
+    constants: &str,
+    index: usize,
+    config: &Config,
+) -> Result<f64, Box<dyn std::error::Error>> {
     let script_path = create_script_with_constants(constants, index, config)?;
     let log_path = get_log_path(index, &config.logs_dir);
     let log_dir = Path::new(&log_path).parent().unwrap();
     std::fs::create_dir_all(log_dir)?;
-    
+
     let mut log_file = std::fs::File::create(&log_path)?;
-    
+
     writeln!(log_file, "Script Index: {}", index)?;
     writeln!(log_file, "Constants:\n{}", constants)?;
     writeln!(log_file, "Script Path: {}", script_path)?;
     writeln!(log_file, "Command: prosperity3bt {} 0", script_path)?;
     log_file.flush()?;
-    
+
     let mut child = Command::new("prosperity3bt")
         .arg(&script_path)
-        .arg("2")
+        .arg("3")
         .stderr(std::process::Stdio::null())
         .spawn()
         .expect("Failed to start command");
-    
+
     // Wait for the process with a timeout
     let timeout = std::time::Duration::from_secs(30);
     let status = match child.wait_timeout(timeout)? {
@@ -252,18 +260,22 @@ fn run_and_get_profit(constants: &str, index: usize, config: &Config) -> Result<
             // Process timed out, kill it
             child.kill()?;
             child.wait()?;
-            writeln!(log_file, "Command timed out after {} seconds", timeout.as_secs())?;
+            writeln!(
+                log_file,
+                "Command timed out after {} seconds",
+                timeout.as_secs()
+            )?;
             log_file.flush()?;
             return Ok(0.0);
         }
     };
-    
+
     let output = child.wait_with_output()?;
     let stdout = String::from_utf8_lossy(&output.stdout);
-    
+
     writeln!(log_file, "Command Status: {}", status)?;
     writeln!(log_file, "stdout:\n{}", stdout)?;
-    
+
     if let Some(profit) = parse_profit(&stdout) {
         writeln!(log_file, "Profit: ${:.2}", profit)?;
     } else {
@@ -271,18 +283,19 @@ fn run_and_get_profit(constants: &str, index: usize, config: &Config) -> Result<
         writeln!(log_file, "Raw output for debugging:\n{}", stdout)?;
     }
     log_file.flush()?;
-    
+
     if !status.success() {
         writeln!(log_file, "Command failed with status: {}", status)?;
         log_file.flush()?;
         return Ok(0.0);
     }
-    
+
     parse_profit(&stdout).ok_or_else(|| "Failed to parse profit".into())
 }
 
 fn validate_target_file(config: &Config) -> Result<(), &'static str> {
-    let content = std::fs::read_to_string(&config.python_script).map_err(|_| "Cannot read target file")?;
+    let content =
+        std::fs::read_to_string(&config.python_script).map_err(|_| "Cannot read target file")?;
     if !content.contains("# start") || !content.contains("# end") {
         return Err("Target file must contain '# start' and '# end'");
     }
@@ -291,7 +304,7 @@ fn validate_target_file(config: &Config) -> Result<(), &'static str> {
 
 fn parse_constants(constants: &str, param_names: &[&String]) -> Option<TestResult> {
     let mut param_map = HashMap::new();
-    
+
     for line in constants.lines() {
         let parts: Vec<&str> = line.split('=').map(|s| s.trim()).collect();
         if parts.len() != 2 {
@@ -301,7 +314,7 @@ fn parse_constants(constants: &str, param_names: &[&String]) -> Option<TestResul
             param_map.insert(parts[0].to_string(), value);
         }
     }
-    
+
     Some(TestResult {
         parameters: param_map,
         profit: 0.0,
@@ -311,11 +324,11 @@ fn parse_constants(constants: &str, param_names: &[&String]) -> Option<TestResul
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let start_time = Instant::now();
     let args = Args::parse();
-    
+
     // Load configuration
     let config = Config::load(&args.config)?;
     validate_target_file(&config)?;
-    
+
     // Set number of threads if specified
     if let Some(threads) = args.threads {
         rayon::ThreadPoolBuilder::new()
@@ -323,24 +336,28 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .build_global()
             .expect("Failed to set number of threads");
     }
-    
+
     let num_threads = rayon::current_num_threads();
     println!("Using {} threads", num_threads);
 
     // Generate constants list using configuration
     let mut constants_list = Vec::new();
-    
+
     // Get all possible values for each parameter
-    let param_values: HashMap<_, _> = config.parameters
+    let param_values: HashMap<_, _> = config
+        .parameters
         .iter()
         .map(|(name, range)| (name, config.generate_values(range)))
         .collect();
-    
+
     // Generate all combinations
     let param_names: Vec<_> = config.parameters.keys().collect();
     let mut indices: Vec<_> = param_names.iter().map(|_| 0).collect();
-    let sizes: Vec<_> = param_names.iter().map(|&name| param_values[name].len()).collect();
-    
+    let sizes: Vec<_> = param_names
+        .iter()
+        .map(|&name| param_values[name].len())
+        .collect();
+
     loop {
         let mut constant_str = String::new();
         for (i, &name) in param_names.iter().enumerate() {
@@ -370,18 +387,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let total_combinations = constants_list.len();
     println!("Generated {} combinations", total_combinations);
-    
+
     // Ensure all directories exist
     ensure_directories(total_combinations, &config.logs_dir)?;
-    
+
     // Clean up old files
     cleanup_directory(total_combinations, &config.logs_dir)?;
-    
+
     let state = Arc::new(Mutex::new(load_state(&config)));
-    
+
     println!("Starting grid search...");
     io::stdout().flush().unwrap();
-    
+
     let pb = ProgressBar::new(total_combinations as u64);
     pb.set_style(
         ProgressStyle::default_bar()
@@ -412,7 +429,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 best_profit = profit;
                 best_constants = constants.clone();
                 println!("\n[NEW MAX] {:.2} with:\n{}\n", profit, constants);
-                
+
                 let state = State {
                     max_profit: profit,
                     constants: constants.clone(),
