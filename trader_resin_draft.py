@@ -14,13 +14,16 @@ ObservationValue = int
 
 # Constants
 RESIN = "RAINFOREST_RESIN"
-# start
 ALPHA_EARLY = 0.0
 ALPHA_LATE = 0.0
 BASESPREAD = 0.0
 ADJUST_SCALE = 0.0
 MAX_ORDER_EARLY = 0.0
 MAX_ORDER_LATE = 2.1
+
+# start
+var1 = 0
+var2 = 1
 # end
 
 ############################################
@@ -198,9 +201,9 @@ class Trader:
 
             # Use a higher alpha in early ticks to adapt faster, then revert to default
             if resin_count < 20:
-                alpha = ALPHA_EARLY
+                alpha = 0.2
             else:
-                alpha = ALPHA_LATE
+                alpha = 0.055
 
             # Exponential smoothing
             resin_avg_price = resin_avg_price * (1 - alpha) + mid_price * alpha
@@ -211,7 +214,7 @@ class Trader:
         ##################################################################
         if RESIN in state.order_depths:
             order_depth = state.order_depths[RESIN]
-            base_spread = BASESPREAD
+            base_spread = 0.7
 
             if order_depth.buy_orders and order_depth.sell_orders:
                 best_bid = max(order_depth.buy_orders.keys())
@@ -221,7 +224,7 @@ class Trader:
                 current_mid = resin_avg_price
 
             diff = current_mid - resin_avg_price
-            adjust_scale = ADJUST_SCALE
+            adjust_scale = 0.5
             fair_value = resin_avg_price
 
             buy_price = fair_value - base_spread / 2
@@ -247,9 +250,9 @@ class Trader:
 
             # Smaller order size during warm-up
             if resin_count < 20:
-                max_order_size = MAX_ORDER_EARLY
+                max_order_size = 5
             else:
-                max_order_size = MAX_ORDER_LATE
+                max_order_size = 10
 
             allowable_buy = 50 - current_position  # how many we can still buy
             allowable_sell = (
